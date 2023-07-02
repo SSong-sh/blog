@@ -10,7 +10,8 @@ function App() {
     "강남 우동맛집",
     "파이썬독학",
   ]);
-  let [따봉, 따봉변경] = useState(0);
+  let [따봉, 따봉변경] = useState([0, 0, 0]);
+
   let [modal, setModal] = useState(false);
 
   return (
@@ -39,7 +40,7 @@ function App() {
         수정버튼
       </button>
 
-      <div className="list">
+      {/* <div className="list">
         <h4>
           {글제목[0]}{" "}
           <span
@@ -66,7 +67,28 @@ function App() {
           {글제목[2]}
         </h4>
         <p>2월 17일 발행</p>
-      </div>
+      </div> */}
+
+      {글제목.map(function (a, i) {
+        return (
+          <div className="list" key={i}>
+            <h4>
+              {글제목[i]}
+              <span
+                onClick={() => {
+                  let 뉴따봉 = [...따봉];
+                  뉴따봉[i] += 1;
+                  따봉변경(뉴따봉);
+                }}
+              >
+                👍
+              </span>
+              {따봉[i]}
+            </h4>
+            <p>2월 17일 발행</p>
+          </div>
+        );
+      })}
 
       {modal == true ? <Modal /> : null}
     </div>
