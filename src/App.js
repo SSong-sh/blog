@@ -93,6 +93,12 @@ function App() {
               {따봉[i]}
             </h4>
             <p>2월 17일 발행</p>
+            <button onClick={(e)=>{
+              var target = e.target;
+              let copy = [...글제목];
+              copy.splice(target,1)
+              제목변경(copy)}}>삭제
+            </button>
           </div>
         );
       })}
