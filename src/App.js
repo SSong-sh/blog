@@ -14,6 +14,7 @@ function App() {
 
   let [modal, setModal] = useState(false);
   let [title, setTitle] = useState(0);
+  let [입력값,입력값변경] = useState("");
 
   return (
     <div className="App">
@@ -81,7 +82,7 @@ function App() {
             >
               {글제목[i]}
               <span
-                onClick={() => {
+                onClick={(e) => {e.stopPropagation()
                   let 뉴따봉 = [...따봉];
                   뉴따봉[i] += 1;
                   따봉변경(뉴따봉);
@@ -95,6 +96,16 @@ function App() {
           </div>
         );
       })}
+
+     <input onChange={(e)=>
+          {입력값변경(e.target.value);
+          }}/>
+
+     <button onClick={()=>{
+      let copy = [...글제목];
+      copy.push(입력값)
+      제목변경(copy)
+     }}>글발행</button>
 
       {modal == true ? <Modal 제목={title} 글제목={글제목} /> : null}
     </div>
